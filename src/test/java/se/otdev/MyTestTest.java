@@ -11,6 +11,8 @@ import se.otdev.entity.TestTwo;
 import java.util.Arrays;
 
 import static java.util.Arrays.asList;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class MyTestTest {
 
@@ -19,7 +21,8 @@ public class MyTestTest {
         TestOne actual = createModel(41);
         TestOne expected = createModel(41);
 
-        Assert.assertTrue(new EqualsBuilder().setTestRecursive(true).reflectionAppend(actual, expected).isEquals());
+        assertTrue(new EqualsBuilder().setTestRecursive(true).reflectionAppend(actual, expected).isEquals());
+        assertFalse(new EqualsBuilder().setTestRecursive(false).reflectionAppend(actual, expected).isEquals());
     }
 
     private TestOne createModel(Integer startId) {
